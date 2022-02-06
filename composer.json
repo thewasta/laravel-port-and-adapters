@@ -32,9 +32,9 @@
       "App\\": "app/",
       "Database\\Factories\\": "database/factories/",
       "Database\\Seeders\\": "database/seeders/",
-      "Catalog\\": "src/BlackBoard/Catalog",
+      "Catalog\\": "src/CustomName/Catalog",
       "Shared\\": "src/Shared",
-      "Admin\\": "src/BlackBoard/Admin",
+      "Admin\\": "src/CustomName/Admin",
       "Api\\": "src/Api"
     }
   },

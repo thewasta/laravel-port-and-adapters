@@ -14,18 +14,11 @@ use League\Tactician\Plugins\LockingMiddleware;
 class QueryBusController extends Controller
 {
     protected CommandBus $bus;
-
+    
     public function __construct(Request $request)
     {
         $locator = new InMemoryLocator();
-
-        $locator->addHandler(
-            new \Catalog\Application\Product\FindProductByIdHandler(
-                new \Catalog\Domain\Product\Service\ProductFindById(
-                    new \Catalog\Infrastructure\Persistence\Eloquent\Product\EloquentProductRepository()
-                )
-            ), \Catalog\Application\Product\Query\FindProductByIdQuery::class);
-
+        
         $this->bus = new CommandBus([
             new LockingMiddleware(),
             new CommandHandlerMiddleware(
