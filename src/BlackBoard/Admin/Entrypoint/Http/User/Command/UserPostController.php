@@ -3,6 +3,8 @@
 namespace Admin\Entrypoint\Http\User\Command;
 
 use Admin\Application\User\Command\UserAuthenticationCommand;
+use Admin\Application\User\Command\UserLogOutCommand;
+use Admin\Application\User\Command\UserRegisterCommand;
 use Admin\Entrypoint\Http\User\CommandBusController;
 use Illuminate\Http\Request;
 
@@ -16,8 +18,16 @@ class UserPostController extends CommandBusController
             false));
     }
     
+    public function register(Request $request): void
+    {
+        $this->bus->handle(new UserRegisterCommand(
+            'email@mail.com',
+            'password'
+        ));
+    }
+    
     public function logOut(Request $request): void
     {
-    
+        $this->bus->handle(new UserLogOutCommand());
     }
 }

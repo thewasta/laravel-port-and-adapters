@@ -2,15 +2,12 @@
 
 namespace Admin\Entrypoint\Http\User;
 
-use Admin\Entrypoint\Bus\Middleware\DatabaseLogger;
-use Admin\Infrastructure\Persistence\Eloquent\User\EloquentUserRepository;
 use League\Tactician\CommandBus;
 use League\Tactician\Handler\CommandHandlerMiddleware;
 use League\Tactician\Handler\CommandNameExtractor\ClassNameExtractor;
 use League\Tactician\Handler\Locator\InMemoryLocator;
 use League\Tactician\Handler\MethodNameInflector\HandleInflector;
 use Shared\Entrypoint\Bus\Middleware\DatabaseTransaction;
-use Shared\Infrastructure\Bus\Logger\DataLogger;
 
 class CommandBusController extends AdminController
 {
@@ -23,12 +20,29 @@ class CommandBusController extends AdminController
         $locator->addHandler(
             new \Admin\Application\User\UserAuthenticationHandler(
                 new \Admin\Domain\Service\User\AuthenticateUser(
-                    new EloquentUserRepository()
+                    new \Admin\Infrastructure\Persistence\Eloquent\User\EloquentUserRepository()
                 )
             ),
             \Admin\Application\User\Command\UserAuthenticationCommand::class
         );
         
+        $locator->addHandler(
+            new \Admin\Application\User\UserRegisterHandler(
+                new \Admin\Domain\Service\User\RegisterUser(
+                    new \Admin\Infrastructure\Persistence\Eloquent\User\EloquentUserRepository()
+                )
+            ),
+            \Admin\Application\User\Command\UserRegisterCommand::class
+        );
+        
+        $locator->addHandler(
+            new \Admin\Application\User\UserLogOutHandler(
+                new \Admin\Domain\Service\User\LogOutUser(
+                    new \Admin\Infrastructure\Persistence\Eloquent\User\EloquentUserRepository()
+                )
+            ),
+            \Admin\Application\User\Command\UserLogOutCommand::class
+        );
         $this->bus = new CommandBus([
             new DatabaseTransaction(),
             new CommandHandlerMiddleware(

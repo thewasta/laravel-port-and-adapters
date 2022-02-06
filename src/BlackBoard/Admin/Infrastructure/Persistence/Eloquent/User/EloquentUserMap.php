@@ -6,7 +6,7 @@ use Shared\Infrastructure\Persistence\Eloquent\Eloquent;
 
 class EloquentUserMap extends Eloquent
 {
-    protected string $table = "app_products";
+    protected string $table = "users";
     
     protected array $mappedClass = [
         'entity' => \Admin\Domain\Model\User\User::class,

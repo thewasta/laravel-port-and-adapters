@@ -5,9 +5,8 @@ namespace Admin\Domain\Service\User;
 use Admin\Domain\Model\User\UserRepository;
 use Admin\Domain\Model\User\ValueObject\UserEmail;
 use Admin\Domain\Model\User\ValueObject\UserPassword;
-use Illuminate\Support\Facades\Auth;
 
-class AuthenticateUser
+class RegisterUser
 {
     private UserRepository $repository;
     
@@ -16,8 +15,8 @@ class AuthenticateUser
         $this->repository = $repository;
     }
     
-    public function execute(string $email, string $password, bool $remember): void
+    public function execute(string $email, string $password): void
     {
-        $this->repository->authenticate(UserEmail::from($email), UserPassword::from($password), $remember);
+        $this->repository->register(UserEmail::from($email), UserPassword::from($password));
     }
 }
