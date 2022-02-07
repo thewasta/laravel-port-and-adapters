@@ -1,8 +1,8 @@
 <?php
 
-namespace Admin\Application\User\Subscriber;
+namespace Admin\Application\Subscriber\Command;
 
-class UserSendMailSubscriber
+class UserSendMailSubscriberCommand
 {
     public object $payload;
     

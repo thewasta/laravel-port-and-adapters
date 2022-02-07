@@ -18,31 +18,31 @@ class CommandBusController extends AdminController
         $locator = new InMemoryLocator();
         
         $locator->addHandler(
-            new \Admin\Application\User\UserAuthenticationHandler(
-                new \Admin\Domain\Service\User\AuthenticateUser(
+            new \Admin\Application\Http\User\UserAuthenticationHandler(
+                new \Admin\Domain\Service\Http\User\AuthenticateUser(
                     new \Admin\Infrastructure\Persistence\Eloquent\User\EloquentUserRepository()
                 )
             ),
-            \Admin\Application\User\Command\UserAuthenticationCommand::class
+            \Admin\Application\Http\User\Command\UserAuthenticationCommand::class
         );
         
         $locator->addHandler(
-            new \Admin\Application\User\UserRegisterHandler(
-                new \Admin\Domain\Service\User\RegisterUser(
+            new \Admin\Application\Http\User\UserRegisterHandler(
+                new \Admin\Domain\Service\Http\User\RegisterUser(
                     new \Admin\Infrastructure\Persistence\Eloquent\User\EloquentUserRepository()
                 ),
                 new \Admin\Infrastructure\Bus\Event\AdminMessageDispatcher()
             ),
-            \Admin\Application\User\Command\UserRegisterCommand::class
+            \Admin\Application\Http\User\Command\UserRegisterCommand::class
         );
         
         $locator->addHandler(
-            new \Admin\Application\User\UserLogOutHandler(
-                new \Admin\Domain\Service\User\LogOutUser(
+            new \Admin\Application\Http\User\UserLogOutHandler(
+                new \Admin\Domain\Service\Http\User\LogOutUser(
                     new \Admin\Infrastructure\Persistence\Eloquent\User\EloquentUserRepository()
                 )
             ),
-            \Admin\Application\User\Command\UserLogOutCommand::class
+            \Admin\Application\Http\User\Command\UserLogOutCommand::class
         );
         $this->bus = new CommandBus([
             new DatabaseTransaction(),

@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Domain\Service\User\Workers;
+namespace Admin\Domain\Service\Subscriber\User;
 
 use Shared\Domain\Notification\ValueObject\NotificationContent;
 use Shared\Domain\Notification\ValueObject\NotificationReceiver;

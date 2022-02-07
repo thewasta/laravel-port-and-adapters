@@ -1,8 +1,8 @@
 <?php
 
-namespace Admin\Application\User;
+namespace Admin\Application\Http\User;
 
-use Admin\Domain\Service\User\LogOutUser;
+use Admin\Domain\Service\Http\User\LogOutUser;
 
 class UserLogOutHandler
 {

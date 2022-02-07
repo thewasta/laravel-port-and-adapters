@@ -2,9 +2,9 @@
 
 namespace Admin\Entrypoint\Http\User\Command;
 
-use Admin\Application\User\Command\UserAuthenticationCommand;
-use Admin\Application\User\Command\UserLogOutCommand;
-use Admin\Application\User\Command\UserRegisterCommand;
+use Admin\Application\Http\User\Command\UserAuthenticationCommand;
+use Admin\Application\Http\User\Command\UserLogOutCommand;
+use Admin\Application\Http\User\Command\UserRegisterCommand;
 use Admin\Entrypoint\Http\User\CommandBusController;
 use Illuminate\Http\Request;
 

@@ -1,11 +1,10 @@
 <?php
 
-namespace Admin\Domain\Service\User;
+namespace Admin\Domain\Service\Http\User;
 
 use Admin\Domain\Model\User\UserRepository;
 use Admin\Domain\Model\User\ValueObject\UserEmail;
 use Admin\Domain\Model\User\ValueObject\UserPassword;
-use Illuminate\Support\Facades\Auth;
 
 class AuthenticateUser
 {

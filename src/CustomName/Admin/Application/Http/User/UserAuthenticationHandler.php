@@ -1,9 +1,9 @@
 <?php
 
-namespace Admin\Application\User;
+namespace Admin\Application\Http\User;
 
-use Admin\Application\User\Command\UserAuthenticationCommand;
-use Admin\Domain\Service\User\AuthenticateUser;
+use Admin\Application\Http\User\Command\UserAuthenticationCommand;
+use Admin\Domain\Service\Http\User\AuthenticateUser;
 
 class UserAuthenticationHandler
 {

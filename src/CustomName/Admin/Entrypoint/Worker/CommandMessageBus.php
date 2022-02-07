@@ -17,12 +17,12 @@ class CommandMessageBus
     {
         $locator = new InMemoryLocator();
         $locator->addHandler(
-            new \Admin\Application\User\UserSendMailHandler(
-                new \Admin\Domain\Service\User\Workers\UserWelcomeMailSender(
+            new \Admin\Application\Subscriber\UserSendMailHandler(
+                new \Admin\Domain\Service\Subscriber\User\UserWelcomeMailSender(
                     new \Shared\Infrastructure\Notification\Mail\MailNotification()
                 )
             ),
-            \Admin\Application\User\Subscriber\UserSendMailSubscriber::class
+            \Admin\Application\Subscriber\Command\UserSendMailSubscriberCommand::class
         );
         $this->bus = new CommandBus([
             new LockingMiddleware(),

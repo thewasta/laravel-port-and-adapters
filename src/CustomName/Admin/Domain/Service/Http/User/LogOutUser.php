@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Domain\Service\User;
+namespace Admin\Domain\Service\Http\User;
 
 use Admin\Domain\Model\User\UserRepository;
 

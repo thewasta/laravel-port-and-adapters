@@ -1,9 +1,9 @@
 <?php
 
-namespace Admin\Application\User;
+namespace Admin\Application\Subscriber;
 
-use Admin\Application\User\Subscriber\UserSendMailSubscriber;
-use Admin\Domain\Service\User\Workers\UserWelcomeMailSender;
+use Admin\Application\Subscriber\Command\UserSendMailSubscriberCommand;
+use Admin\Domain\Service\Subscriber\User\UserWelcomeMailSender;
 
 class UserSendMailHandler
 {
@@ -14,7 +14,7 @@ class UserSendMailHandler
         $this->service = $service;
     }
     
-    public function handle(UserSendMailSubscriber $subscriber): void
+    public function handle(UserSendMailSubscriberCommand $subscriber): void
     {
         $this->service->execute($subscriber->payload());
     }

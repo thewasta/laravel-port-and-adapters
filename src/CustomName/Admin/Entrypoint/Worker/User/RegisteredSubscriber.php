@@ -2,7 +2,7 @@
 
 namespace Admin\Entrypoint\Worker\User;
 
-use Admin\Application\User\Subscriber\UserSendMailSubscriber;
+use Admin\Application\Subscriber\Command\UserSendMailSubscriberCommand;
 use Admin\Domain\Event\User\UserRegistered;
 use Admin\Entrypoint\Worker\CommandMessageBus;
 use Illuminate\Bus\Queueable;
@@ -17,6 +17,6 @@ class RegisteredSubscriber extends CommandMessageBus implements ShouldQueue
     
     public function consume(UserRegistered $event): void
     {
-        $this->bus->handle(new UserSendMailSubscriber($event->payload()));
+        $this->bus->handle(new UserSendMailSubscriberCommand($event->payload()));
     }
 }

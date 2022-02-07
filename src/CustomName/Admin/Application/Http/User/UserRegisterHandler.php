@@ -2,8 +2,8 @@
 
 namespace Admin\Application\User;
 
-use Admin\Application\User\Command\UserRegisterCommand;
-use Admin\Domain\Service\User\RegisterUser;
+use Admin\Application\Http\User\Command\UserRegisterCommand;
+use Admin\Domain\Service\Http\User\RegisterUser;
 use Shared\Domain\Messaging\MessageDispatcher;
 
 class UserRegisterHandler
