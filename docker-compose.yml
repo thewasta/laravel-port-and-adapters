@@ -26,6 +26,15 @@ services:
             MYSQL_PASSWORD: ${DB_PASSWORD}
         networks:
             - tech
+    mailhog:
+        image: mailhog/mailhog:latest
+        container_name: simple_mail
+        ports:
+            - "1025:1025"
+            - "8025:8025"
+        networks:
+            - tech
+
 volumes:
     db_data:
         driver: local
