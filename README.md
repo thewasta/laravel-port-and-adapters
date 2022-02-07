@@ -17,6 +17,14 @@ For this I will be using a command bus library [league/tactician][tactician_doc]
 
 If you start reading code from `src/CustomName/Admin` you should have a nice start.
 
+#### `src/CustomName/Admin/Application/User`
+
+**User** is your entity and inside of this folder you have your "use case" with naming `Handler` at the end. Two folder Query (read actions) and Command (Edit/Create actions). For example, you need to Register a new user? **UserRegisterHandler** sounds a nice name, your command name should be the same but with "Command" at the end, instead of "Handler", **UserRegisterCommand**.
+Commands and Queries are 1:1 with Handler.
+
+#### `src/CustomName/Admin/Domain/`
+
+
 
 [hexagonal_doc]: https://blog.ndepend.com/hexagonal-architecture/
 
