@@ -8,10 +8,18 @@ class UserRegisterCommand
     
     private string $password;
     
-    public function __construct(string $email, string $password)
+    private string $name;
+    
+    public function __construct(string $name, string $email, string $password)
     {
+        $this->name = $name;
         $this->email = $email;
         $this->password = $password;
+    }
+    
+    public function name(): string
+    {
+        return $this->name;
     }
     
     public function email(): string

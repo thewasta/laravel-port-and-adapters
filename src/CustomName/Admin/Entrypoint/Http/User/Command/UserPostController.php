@@ -21,6 +21,7 @@ class UserPostController extends CommandBusController
     public function register(Request $request): void
     {
         $this->bus->handle(new UserRegisterCommand(
+            'User Name',
             'email@mail.com',
             'password'
         ));
