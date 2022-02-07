@@ -2,9 +2,13 @@
 
 namespace Admin\Domain\Service\User;
 
+use Admin\Domain\Event\User\UserRegistered;
+use Admin\Domain\Model\User\User;
 use Admin\Domain\Model\User\UserRepository;
 use Admin\Domain\Model\User\ValueObject\UserEmail;
+use Admin\Domain\Model\User\ValueObject\UserName;
 use Admin\Domain\Model\User\ValueObject\UserPassword;
+use Shared\Domain\Messaging\MessageDispatcher;
 
 class RegisterUser
 {
@@ -15,8 +19,10 @@ class RegisterUser
         $this->repository = $repository;
     }
     
-    public function execute(string $email, string $password): void
+    public function execute(string $name, string $email, string $password, MessageDispatcher $dispatcher): void
     {
-        $this->repository->register(UserEmail::from($email), UserPassword::from($password));
+        $user = User::create(UserName::from($name), UserEmail::from($email), UserPassword::from($password));
+        $this->repository->register($user);
+        $dispatcher->publish(new UserRegistered($user));
     }
 }
