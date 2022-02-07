@@ -10,5 +10,5 @@ interface MessageDispatcher
 
     public function notify(): void;
 
-    public function events(): void;
+    public function events(): array;
 }

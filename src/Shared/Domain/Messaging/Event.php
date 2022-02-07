@@ -4,7 +4,7 @@ namespace Shared\Domain\Messaging;
 
 interface Event
 {
-    public function payload();
-
-    public function occurredOn();
+    public function payload(): object;
+    
+    public function occurredOn(): int;
 }
