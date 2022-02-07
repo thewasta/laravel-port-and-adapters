@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Application\User;
+namespace Admin\Application\Http\User;
 
 use Admin\Application\Http\User\Command\UserRegisterCommand;
 use Admin\Domain\Service\Http\User\RegisterUser;
