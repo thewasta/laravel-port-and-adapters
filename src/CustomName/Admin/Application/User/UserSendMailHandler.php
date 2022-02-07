@@ -2,7 +2,7 @@
 
 namespace Admin\Application\User;
 
-class UserSendMainHandler
+class UserSendMailHandler
 {
     private $service;
     
