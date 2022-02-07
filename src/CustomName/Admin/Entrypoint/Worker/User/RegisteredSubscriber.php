@@ -2,7 +2,7 @@
 
 namespace Admin\Entrypoint\Worker\User;
 
-use Admin\Application\User\Command\UserSendMailSubscriber;
+use Admin\Application\User\Subscriber\UserSendMailSubscriber;
 use Admin\Domain\Event\User\UserRegistered;
 use Admin\Entrypoint\Worker\CommandMessageBus;
 use Illuminate\Bus\Queueable;

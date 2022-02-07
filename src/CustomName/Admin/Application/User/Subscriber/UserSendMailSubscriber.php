@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Application\User\Command;
+namespace Admin\Application\User\Subscriber;
 
 class UserSendMailSubscriber
 {

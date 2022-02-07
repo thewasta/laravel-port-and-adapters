@@ -1,42 +1,49 @@
 version: "3"
 services:
-    app:
-        container_name: simple_app
-        build:
-            dockerfile: Dockerfile
-            context: .
-        volumes:
-            - .:/app
-        ports:
-            - "8080:8000"
-        networks:
-            - tech
-    db:
-        container_name: simple_db
-        image: mysql:8.0
-        volumes:
-            - db_data:/var/lib/mysql
-        restart: always
-        ports:
-            - "3305:3306"
-        environment:
-            MYSQL_ROOT_PASSWORD: strongpassword
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_USER: ${DB_USERNAME}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-        networks:
-            - tech
-    mailhog:
-        image: mailhog/mailhog:latest
-        container_name: simple_mail
-        ports:
-            - "1025:1025"
-            - "8025:8025"
-        networks:
-            - tech
-
+  app:
+    container_name: simple_app
+    image: thewasta/laravel-php-8:1.0.1
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8000"
+    depends_on:
+      - db
+      - mailhog
+      - redis
+    networks:
+      - tech
+  db:
+    container_name: simple_db
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    ports:
+      - "3305:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: strongpassword
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - tech
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: simple_mail
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - tech
+  redis:
+    hostname: simple_redis
+    image: redis
+    container_name: simple_redis
+    networks:
+      - tech
 volumes:
-    db_data:
-        driver: local
+  db_data:
+    driver: local
 networks:
-    tech:
+  tech:

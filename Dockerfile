@@ -1,4 +1,8 @@
 FROM php:8.0-fpm
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
+    install-php-extensions http
 
 RUN apt-get update && apt-get install -y \
 git \
@@ -22,9 +26,14 @@ RUN rm -rf composer-setup.php
 RUN apt-get update && apt-get install -y \
 software-properties-common \
 npm
-RUN npm install npm@latest -g && \
-npm install n -g && \
-n latest
+
+RUN mkdir -p /usr/src/php/ext/redis; \
+	curl -fsSL https://pecl.php.net/get/redis --ipv4 | tar xvz -C "/usr/src/php/ext/redis" --strip 1; \
+	docker-php-ext-install redis;
+
+#RUN npm install npm@latest -g && \
+#npm install n -g && \
+#n latest
 
 WORKDIR /app
 COPY . /app

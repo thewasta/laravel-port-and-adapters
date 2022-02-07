@@ -20,9 +20,10 @@ class UserPostController extends CommandBusController
     
     public function register(Request $request): void
     {
+        $faker = \Faker\Factory::create();
         $this->bus->handle(new UserRegisterCommand(
-            'User Name',
-            'email@mail.com',
+            $faker->name,
+            $faker->email,
             'password'
         ));
     }

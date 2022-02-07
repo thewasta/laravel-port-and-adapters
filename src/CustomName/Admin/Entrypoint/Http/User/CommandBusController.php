@@ -30,7 +30,8 @@ class CommandBusController extends AdminController
             new \Admin\Application\User\UserRegisterHandler(
                 new \Admin\Domain\Service\User\RegisterUser(
                     new \Admin\Infrastructure\Persistence\Eloquent\User\EloquentUserRepository()
-                )
+                ),
+                new \Admin\Infrastructure\Bus\Event\AdminMessageDispatcher()
             ),
             \Admin\Application\User\Command\UserRegisterCommand::class
         );

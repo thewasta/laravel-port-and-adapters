@@ -9,14 +9,15 @@
   "license": "MIT",
   "require": {
     "php": "^7.4|^8.0",
+    "ext-http": "*",
+    "ext-json": "*",
     "fruitcake/laravel-cors": "^2.0",
     "guzzlehttp/guzzle": "^7.0.1",
     "laravel/framework": "^8.75",
+    "laravel/horizon": "^5.8",
     "laravel/sanctum": "^2.11",
     "laravel/tinker": "^2.5",
-    "league/tactician": "^1.1",
-    "ext-http": "*",
-    "ext-json": "*"
+    "league/tactician": "^1.1"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",

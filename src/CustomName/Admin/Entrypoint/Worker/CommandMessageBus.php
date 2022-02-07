@@ -16,7 +16,14 @@ class CommandMessageBus
     public function __construct()
     {
         $locator = new InMemoryLocator();
-        
+        $locator->addHandler(
+            new \Admin\Application\User\UserSendMailHandler(
+                new \Admin\Domain\Service\User\Workers\UserWelcomeMailSender(
+                    new \Shared\Infrastructure\Notification\Mail\MailNotification()
+                )
+            ),
+            \Admin\Application\User\Subscriber\UserSendMailSubscriber::class
+        );
         $this->bus = new CommandBus([
             new LockingMiddleware(),
             new CommandHandlerMiddleware(
