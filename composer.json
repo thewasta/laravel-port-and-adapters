@@ -33,9 +33,9 @@
       "App\\": "app/",
       "Database\\Factories\\": "database/factories/",
       "Database\\Seeders\\": "database/seeders/",
-      "Catalog\\": "src/CustomName/Catalog",
+      "Catalog\\": "src/BackOffice/Catalog",
       "Shared\\": "src/Shared",
-      "Admin\\": "src/CustomName/Admin",
+      "Admin\\": "src/BackOffice/Admin",
       "Api\\": "src/Api"
     }
   },
