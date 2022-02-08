@@ -15,8 +15,8 @@ class AuthenticateUser
         $this->repository = $repository;
     }
     
-    public function execute(string $email, string $password, bool $remember): void
+    public function execute(string $email, string $password, bool $remember): bool
     {
-        $this->repository->authenticate(UserEmail::from($email), UserPassword::from($password), $remember);
+        return $this->repository->authenticate(UserEmail::from($email), UserPassword::from($password), $remember);
     }
 }

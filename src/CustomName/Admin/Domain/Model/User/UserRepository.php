@@ -9,7 +9,7 @@ interface UserRepository
 {
     public function register(User $user): User;
     
-    public function authenticate(UserEmail $email, UserPassword $password, bool $remember): void;
+    public function authenticate(UserEmail $email, UserPassword $password, bool $remember): bool;
     
     public function logOut(): void;
 }

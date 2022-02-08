@@ -1,8 +1,8 @@
 <?php
 
-namespace Admin\Application\Subscriber;
+namespace Admin\Application\Subscriber\User;
 
-use Admin\Application\Subscriber\Command\UserSendMailSubscriberCommand;
+use Admin\Application\Subscriber\User\Command\UserSendMailSubscriberCommand;
 use Admin\Domain\Service\Subscriber\User\UserWelcomeMailSender;
 
 class UserSendMailHandler

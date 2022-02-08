@@ -10,12 +10,17 @@ use Illuminate\Http\Request;
 
 class UserPostController extends CommandBusController
 {
-    public function authenticate(Request $request): void
+    public function authenticate(Request $request): bool|\Illuminate\Http\RedirectResponse
     {
-        $this->bus->handle(new UserAuthenticationCommand(
-            "email@mail.com",
-            "password",
-            false));
+        $auth = $this->bus->handle(new UserAuthenticationCommand(
+            "bruen.brent@streich.com",
+            "password2",
+            true));
+        if ($auth) {
+            return $request->session()->regenerate();
+        }
+        
+        return back(302)->withErrors(['auth' => 'failed to authenticate user']);
     }
     
     public function register(Request $request): void
@@ -31,5 +36,7 @@ class UserPostController extends CommandBusController
     public function logOut(Request $request): void
     {
         $this->bus->handle(new UserLogOutCommand());
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
     }
 }

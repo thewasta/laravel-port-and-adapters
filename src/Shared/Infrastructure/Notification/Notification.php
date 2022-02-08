@@ -3,6 +3,7 @@
 namespace Shared\Infrastructure\Notification;
 
 use Illuminate\Notifications\Notifiable;
+use Shared\Domain\Notification\ValueObject\NotificationReceivers;
 use Shared\Domain\Notification\ValueObject\NotificationContent;
 use Shared\Domain\Notification\ValueObject\NotificationReceiver;
 use Shared\Domain\Notification\ValueObject\NotificationSender;
@@ -14,7 +15,7 @@ class Notification extends \Illuminate\Notifications\Notification implements \Sh
     
     protected NotificationSender $sender;
     
-    protected NotificationReceiver $receiver;
+    protected NotificationReceivers $receiver;
     
     protected NotificationTitle $title;
     
@@ -22,7 +23,7 @@ class Notification extends \Illuminate\Notifications\Notification implements \Sh
     
     public function send(
         NotificationSender $sender,
-        NotificationReceiver $receiver,
+        NotificationReceivers $receiver,
         NotificationTitle $title,
         NotificationContent $content,
         array $data

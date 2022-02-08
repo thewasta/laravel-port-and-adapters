@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [\Admin\Entrypoint\Http\User\Command\UserPostController::class, 'authenticate']);
+Route::get('/login',
+    [\Admin\Entrypoint\Http\User\Command\UserPostController::class, 'authenticate'])->middleware('throttle:3,1');
 Route::get('register', [\Admin\Entrypoint\Http\User\Command\UserPostController::class, 'register']);
 Route::get('logout', [\Admin\Entrypoint\Http\User\Command\UserPostController::class, 'logOut']);
