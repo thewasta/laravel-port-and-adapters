@@ -4,11 +4,8 @@ namespace Shared\Domain\ValueObject;
 
 abstract class ArrayOfStringValueObject implements ValueObject
 {
-    private array $value;
-    
-    public function __construct(array $value)
+    public function __construct(private array $value)
     {
-        $this->value = $value;
     }
     
     /** @noinspection PhpPureAttributeCanBeAddedInspection */
