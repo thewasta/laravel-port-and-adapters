@@ -14,8 +14,8 @@ class UserAuthenticationHandler
         $this->service = $service;
     }
     
-    public function handle(UserAuthenticationCommand $command): void
+    public function handle(UserAuthenticationCommand $command): bool
     {
-        $this->service->execute($command->email(), $command->password(), $command->remember());
+        return $this->service->execute($command->email(), $command->password(), $command->remember());
     }
 }

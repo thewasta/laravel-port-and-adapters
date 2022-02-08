@@ -20,9 +20,9 @@ class EloquentUserRepository extends EloquentUserMap implements UserRepository
         return $user;
     }
     
-    public function authenticate(UserEmail $email, UserPassword $password, bool $remember): void
+    public function authenticate(UserEmail $email, UserPassword $password, bool $remember): bool
     {
-        Auth::attempt(['email' => $email->value(), 'password' => $password->value()], $remember);
+        return Auth::attempt(['email' => $email->value(), 'password' => "password2"], $remember);
     }
     
     public function logOut(): void

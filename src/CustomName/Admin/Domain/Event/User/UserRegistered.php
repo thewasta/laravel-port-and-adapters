@@ -23,7 +23,7 @@ class UserRegistered implements Event
         return $this->occurredOn;
     }
     
-    public function payload(): object
+    public function payload(): User
     {
         return $this->payload;
     }
