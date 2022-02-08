@@ -33,7 +33,7 @@ class Eloquent
         return $this->connection;
     }
 
-    public function models(...$raws)
+    public function models(...$raws): array
     {
         $items = [];
         foreach ($raws as $raw) {
